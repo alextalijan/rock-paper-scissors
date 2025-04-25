@@ -28,15 +28,13 @@ function getHumanChoice() {
 
 // Function that runs one round of the game
 function playRound(humanChoice, computerChoice) {
-    
+    // Capture computer and human moves in variables
+    const computerMove = getComputerChoice();
+    const humanMove = getHumanChoice();
 }
 
 // Declare variables to keep track of user and computer score
 let humanScore, computerScore = 0;
-
-// Capture computer and human moves in variables
-const computerMove = getComputerChoice();
-const humanMove = getHumanChoice();
 
 // Play a round
 playRound(humanMove, computerMove);
