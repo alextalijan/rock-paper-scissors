@@ -1,7 +1,7 @@
-// A function that randomly returns rock, paper or scissors
+// Function that randomly returns rock, paper or scissors
 function getComputerChoice() {
     // Choose a random number between 1 and 3
-    randomMoveNumber = Math.floor(Math.random() * 3) + 1;
+    const randomMoveNumber = Math.floor(Math.random() * 3) + 1;
 
     // Depending on the number, choose a particular possible move
     switch(randomMoveNumber) {
@@ -14,4 +14,14 @@ function getComputerChoice() {
         case 3:
             return "scissors";
     }
+}
+
+// Function that takes prompts the user for a possible move
+function getHumanChoice() {
+    // Prompt the user to input a valid move, case-insensitive
+    const userMove = prompt("Choose rock, paper, or scissors: ");
+    console.log(userMove);
+
+    // Return the move they have chosen
+    return userMove;
 }
