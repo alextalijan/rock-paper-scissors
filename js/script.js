@@ -25,3 +25,19 @@ function getHumanChoice() {
     // Return the move they have chosen
     return userMove;
 }
+
+// Function that runs one round of the game
+function playRound(humanChoice, computerChoice) {
+    
+}
+
+// Declare variables to keep track of user and computer score
+let humanScore, computerScore = 0;
+
+// Capture computer and human moves in variables
+const computerMove = getComputerChoice();
+const humanMove = getHumanChoice();
+
+// Play a round
+playRound(humanMove, computerMove);
+
