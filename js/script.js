@@ -62,6 +62,22 @@ function playRound(humanChoice, computerChoice) {
     
     // Announce the score after this round
     scoreDiv.textContent = `The current score is ${humanScore} (You) - ${computerScore} (Computer).`;
+
+    // If either player has reached 5 points, announce the winner and end the game
+    if (humanScore === 5 || computerScore === 5) {
+        const winnerAnnouncementDiv = document.querySelector(".winner");
+        if (humanScore > computerScore) {
+            winnerAnnouncementDiv.textContent = "Congratulations, you've won!";
+        } else {
+            winnerAnnouncementDiv.textContent = "The computer has won. Better luck next time...";
+        }
+
+        // Remove event listeners for buttons in order to prevent further play of the game
+        const gameButtons = document.querySelectorAll(".btn");
+        gameButtons.forEach((button) => {
+            button.removeEventListener("click", (event) => playRound(event.target.value, getComputerChoice()));
+        });
+    }
     
 }
 
