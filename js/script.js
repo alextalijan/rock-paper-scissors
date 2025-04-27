@@ -16,6 +16,11 @@ function getComputerChoice() {
     }
 }
 
+// Callback function for starting a round
+function startRoundEvent(event) {
+    playRound(event.target.value, getComputerChoice());
+}
+
 function playRound(humanChoice, computerChoice) {
     // Capture tags for score and round result into variables
     const scoreDiv = document.querySelector(".score");
@@ -75,7 +80,7 @@ function playRound(humanChoice, computerChoice) {
         // Remove event listeners for buttons in order to prevent further play of the game
         const gameButtons = document.querySelectorAll(".btn");
         gameButtons.forEach((button) => {
-            button.removeEventListener("click", (event) => playRound(event.target.value, getComputerChoice()));
+            button.removeEventListener("click", startRoundEvent);
         });
     }
     
@@ -88,5 +93,5 @@ let computerScore = 0;
 // Add event listeners to keep track if a button is clicked, then start the round
 const gameButtons = document.querySelectorAll(".btn");
 gameButtons.forEach((button) => {
-    button.addEventListener("click", (event) => playRound(event.target.value, getComputerChoice()));
+    button.addEventListener("click", startRoundEvent);
 });
