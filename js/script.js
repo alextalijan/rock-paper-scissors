@@ -17,43 +17,51 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    // Capture tags for score and round result into variables
+    const scoreDiv = document.querySelector(".score");
+    const roundResultDiv = document.querySelector(".round-result");
+
     // If the two moves are same, announce a tie
     if (humanChoice === computerChoice) {
-        console.log(`It's a tie. You both chose ${humanChoice}.`);
+        roundResultDiv.textContent = `It's a tie. You both chose ${humanChoice}.`;
     } // Else check the relationship between moves and announce the winner
     else {
         switch(humanChoice) {
             case "rock":
                 if (computerChoice === "paper") {
-                    console.log("You lose! Paper beats Rock.");
+
+                    roundResultDiv.textContent = "You lose! Paper beats Rock.";
                     computerScore++;
                 } else {
-                    console.log("You win! Rock beats Scissors.");
+                    roundResultDiv.textContent = "You win! Rock beats Scissors.";
                     humanScore++;
                 }
                 break;
 
             case "paper":
                 if (computerChoice === "rock") {
-                    console.log("You win! Paper beats Rock.");
+                    roundResultDiv.textContent = "You win! Paper beats Rock.";
                     humanScore++;
                 } else {
-                    console.log("You lose! Scissors beat Paper.");
+                    roundResultDiv.textContent = "You lose! Scissors beat Paper.";
                     computerScore++;
                 }
                 break;
 
             case "scissors":
                 if (computerChoice === "paper") {
-                    console.log("You win! Scissors beat Paper.");
+                    roundResultDiv.textContent = "You win! Scissors beat Paper.";
                     humanScore++;
                 } else {
-                    console.log("You lose! Rock beats Scissors.");
+                    roundResultDiv.textContent = "You lose! Rock beats Scissors.";
                     computerScore++;
                 }
                 break;
         }
     }
+    
+    // Announce the score after this round
+    scoreDiv.textContent = `The current score is ${humanScore} (You) - ${computerScore} (Computer).`;
     
 }
 
@@ -61,7 +69,7 @@ function playRound(humanChoice, computerChoice) {
 let humanScore = 0;
 let computerScore = 0;
 
-// Add event listeners to keep track if a button is clicked, then start the game
+// Add event listeners to keep track if a button is clicked, then start the round
 const gameButtons = document.querySelectorAll(".btn");
 gameButtons.forEach((button) => {
     button.addEventListener("click", (event) => playRound(event.target.value, getComputerChoice()));
